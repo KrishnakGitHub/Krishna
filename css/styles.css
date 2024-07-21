@@ -199,18 +199,35 @@ section {
 
 #projects {
     position: relative;
+    color: #2079c7;
     padding: 80px 10%;
+}
+
+#projects .project-container{
+    position: relative;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
     color: #2079c7;
 }
 
-#prjects .project-container {
+ .project-container .project {
+    /* max-width: 320px; */
+    background: rgb(32, 121, 199, 0.1);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    margin-top: 10px;
     padding: 20px;
 }
 
-.project-container .project {
-    width: 100%;
-    background: rgb(32, 121, 199, 0.1);
+.project:hover {
     border: 2px solid #2079c7;
-    border-radius: 20px;
-    margin-top: 10px;
+    transition: all 0.5s;
+    box-shadow: rgb(0, 0, 0, 0.05);
+}
+
+.project .name {
+    font-size: 1rem;
+    font-weight: 600;
 }
