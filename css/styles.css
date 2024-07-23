@@ -231,3 +231,43 @@ section {
     font-size: 1rem;
     font-weight: 600;
 }
+
+.todo .sidebar {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 20px 0;
+    border-right: 1px solid #ddd;
+    background-color: #f8f9fa;
+}
+
+.todo .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.todo .nav-link.active {
+    font-weight: bold;
+}
+
+.todo .main-content {
+    margin-left: 250px; 
+    padding: 20px;
+}
+
+.todo .card-body {
+    min-height: 300px;
+}
+
+.todo .task-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
