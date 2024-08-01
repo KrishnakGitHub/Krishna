@@ -262,9 +262,9 @@ section {
     padding: 20px;
 }
 
-.todo .card-body {
+/* .todo .card-body {
     min-height: 300px;
-}
+} */
 
 .todo .task-buttons {
     display: flex;
