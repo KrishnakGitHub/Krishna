@@ -1,31 +1,10 @@
-const FILE_NAME = '../data/tasks.json';
-// console.log(FILE_NAME);
-let lists = [];
-let currentListId = null;
+const LOCAL_STORAGE_KEY = 'todoApp';
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [{ id: Date.now(), name: 'Default List', tasks: [] }];
+let currentListId = lists[0].id;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const importTasksInput = document.getElementById('import-tasks');
-    importTasksInput.addEventListener('change', importTasks);
-
-    file = FILE_NAME;
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            try {
-                const data = JSON.parse(e.target.result);
-                lists = data;
-                if (lists.length > 0) {
-                    currentListId = lists[0].id;
-                }
-                loadListNavigation();
-                loadTasks();
-                alert('Tasks imported successfully!');
-            } catch (error) {
-                alert('Error reading tasks file: ' + error.message);
-            }
-        };
-        reader.readAsText(file);
-    }
+    loadListNavigation();
+    loadTasks();
 });
 
 function loadListNavigation() {
@@ -53,7 +32,7 @@ function createNewList() {
     if (newListName) {
         const newList = { id: Date.now(), name: newListName, tasks: [] };
         lists.push(newList);
-        saveToFile();
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
         document.getElementById('new-list-name').value = '';
         loadListNavigation();
         switchList(newList.id);
@@ -77,7 +56,7 @@ function createTask() {
         const task = { id: taskId, name: taskName, status: 'todo', priority: taskPriority, createdDate: new Date().toLocaleDateString() };
         const list = lists.find(list => list.id === currentListId);
         list.tasks.push(task);
-        saveToFile();
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
         addTaskToDOM(task);
         taskInput.value = '';
         document.getElementById('task-priority').value = 'medium';
@@ -120,7 +99,7 @@ function addTaskToDOM(task) {
     const editButton = document.createElement('button');
     editButton.className = 'btn btn-secondary btn-sm';
     editButton.innerHTML = '<i class="fas fa-edit"></i>';
-    editButton.onclick = () => editTask(task.id, taskCard);
+    editButton.onclick = () => editTask(task.id, cardBody);
 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'btn btn-danger btn-sm';
@@ -148,12 +127,23 @@ function addTaskToDOM(task) {
     document.getElementById(task.status).appendChild(taskCard);
 }
 
+function editTask(taskId, cardBody) {
+    const newTaskName = prompt("Edit task:", cardBody.querySelector('.task-name').innerText);
+    if (newTaskName) {
+        cardBody.querySelector('.task-name').innerText = newTaskName;
+        const list = lists.find(list => list.id === currentListId);
+        const task = list.tasks.find(t => t.id === taskId);
+        task.name = newTaskName;
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
+    }
+}
+
 function deleteTask(taskId, taskCard) {
     if (confirm("Are you sure you want to delete this task?")) {
         taskCard.remove();
         const list = lists.find(list => list.id === currentListId);
         list.tasks = list.tasks.filter(task => task.id !== taskId);
-        saveToFile();
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
     }
 }
 
@@ -165,7 +155,7 @@ function moveTask(taskId, direction) {
     } else if (direction === 'down' && taskIndex < list.tasks.length - 1) {
         [list.tasks[taskIndex], list.tasks[taskIndex + 1]] = [list.tasks[taskIndex + 1], list.tasks[taskIndex]];
     }
-    saveToFile();
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
     loadTasks();
 }
 
@@ -187,7 +177,7 @@ function drop(event) {
     const list = lists.find(list => list.id === currentListId);
     const task = list.tasks.find(t => t.id === data);
     task.status = newStatus;
-    saveToFile();
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
 }
 
 function exportTasks() {
@@ -208,7 +198,7 @@ function importTasks(event) {
         const tasks = JSON.parse(e.target.result);
         const list = lists.find(list => list.id === currentListId);
         list.tasks = tasks;
-        saveToFile();
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
         loadTasks();
     };
     reader.readAsText(file);
@@ -217,7 +207,7 @@ function importTasks(event) {
 function deleteCurrentList() {
     if (confirm("Are you sure you want to delete this list?")) {
         lists = lists.filter(list => list.id !== currentListId);
-        saveToFile();
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
         loadListNavigation();
         if (lists.length > 0) {
             switchList(lists[0].id);
@@ -232,43 +222,8 @@ function renameCurrentList() {
     const newName = prompt("Enter new list name:", lists.find(list => list.id === currentListId).name);
     if (newName) {
         lists.find(list => list.id === currentListId).name = newName;
-        saveToFile();
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
         loadListNavigation();
         document.getElementById('current-list-title').textContent = newName;
     }
 }
-
-function editTask(taskId) {
-    const list = lists.find(list => list.id === currentListId);
-    const task = list.tasks.find(t => t.id === taskId);
-    if (!task) return;
-
-    const newName = prompt("Enter new task name:", task.name);
-    if (newName !== null && newName.trim() !== '') {
-        task.name = newName.trim();
-    }
-
-    const newPriority = prompt("Enter new task priority (low, medium, high):", task.priority);
-    if (newPriority !== null && ['low', 'medium', 'high'].includes(newPriority.toLowerCase())) {
-        task.priority = newPriority.toLowerCase();
-    }
-
-    // Save changes to file
-    saveToFile();
-
-    // Reload tasks to reflect changes
-    loadTasks();
-}
-
-function saveToFile() {
-    const blob = new Blob([JSON.stringify(lists, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = FILE_NAME;
-    a.click();
-    URL.revokeObjectURL(url);
-}
-
-// Hook up import tasks to the file input
-document.getElementById('import-tasks').addEventListener('change', importTasks);

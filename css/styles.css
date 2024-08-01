@@ -285,7 +285,9 @@ body {
     border-radius: .5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.lg-card {
+    min-height: 300px;
+}
 .task-card {
     border-radius: .5rem;
     border: none;
