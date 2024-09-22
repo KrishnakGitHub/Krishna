@@ -99,7 +99,7 @@ function addTaskToDOM(task) {
     const editButton = document.createElement('button');
     editButton.className = 'btn btn-secondary btn-sm';
     editButton.innerHTML = '<i class="fas fa-edit"></i>';
-    editButton.onclick = () => editTask(task.id, cardBody);
+    editButton.onclick = () => editTask(task.id, taskCard);
 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'btn btn-danger btn-sm';
@@ -125,17 +125,6 @@ function addTaskToDOM(task) {
     taskCard.appendChild(buttonGroup);
 
     document.getElementById(task.status).appendChild(taskCard);
-}
-
-function editTask(taskId, cardBody) {
-    const newTaskName = prompt("Edit task:", cardBody.querySelector('.task-name').innerText);
-    if (newTaskName) {
-        cardBody.querySelector('.task-name').innerText = newTaskName;
-        const list = lists.find(list => list.id === currentListId);
-        const task = list.tasks.find(t => t.id === taskId);
-        task.name = newTaskName;
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
-    }
 }
 
 function deleteTask(taskId, taskCard) {
@@ -226,4 +215,26 @@ function renameCurrentList() {
         loadListNavigation();
         document.getElementById('current-list-title').textContent = newName;
     }
+}
+
+function editTask(taskId) {
+    const list = lists.find(list => list.id === currentListId);
+    const task = list.tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    const newName = prompt("Enter new task name:", task.name);
+    if (newName !== null && newName.trim() !== '') {
+        task.name = newName.trim();
+    }
+
+    const newPriority = prompt("Enter new task priority (low, medium, high):", task.priority);
+    if (newPriority !== null && ['low', 'medium', 'high'].includes(newPriority.toLowerCase())) {
+        task.priority = newPriority.toLowerCase();
+    }
+
+    // Save changes to localStorage
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
+
+    // Reload tasks to reflect changes
+    loadTasks();
 }
