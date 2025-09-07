@@ -2,19 +2,21 @@
 
 :root {
     --primary-color: #2C3E50;
-    --secondry-color: #2079c7;
+    --secondry-color: #f97316;
+    --secondry-archieve-color: #2079c7;
 }
 
 @layer utilities {
     .text-primary {
         color: var(--primary-color);
-        font-size: 52px;
+        font-size: clamp(40px, 5vw, 58px);
         font-weight: 700;
         line-height: 1.2;
     }
     .text-secondry {
-        color: var(--color-orange-500);
-        font-size: 24px;
+        color: var(--secondry-color);
+        font-size: clamp(20px, 2.5vw, 32px);
         font-weight: 700;
+        line-height: 1.4;
     }
 }

@@ -4,8 +4,8 @@ import About from "./_components/About";
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <About />
+      < Navbar />
+      < About />
     </div>
   );
 }
