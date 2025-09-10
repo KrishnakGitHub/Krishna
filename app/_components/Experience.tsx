@@ -1,6 +1,14 @@
 import React from 'react';
 
-const experienceData = [
+type ExperienceType = {
+  role: string;
+  company: string;
+  duration: string;
+  description: string[];
+  type: "work" | "education";
+};
+
+const experienceData: ExperienceType[] = [
   {
     role: "Bachelor of Technology",
     company: "SBS State University",
