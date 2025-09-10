@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-transparent text-[#f97316] absolute top-0 z-50">
       <div className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
-        <div className="text-2xl font-bold">Krishna's Resume</div>
+        <div className="text-2xl font-bold">Krishna&apos;s Resume</div>
         <ul className="hidden md:flex space-x-8">
           <li>
             <a href="#about" className={linkClasses}>About</a>
