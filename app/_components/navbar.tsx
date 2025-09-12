@@ -12,8 +12,8 @@ export default function Navbar() {
     () => [
       { href: "#about", label: "About" },
       { href: "#experience", label: "Experience" },
-      { href: "#skills", label: "Skills" },
-      { href: "#projects", label: "Projects" },
+      // { href: "#skills", label: "Skills" },
+      // { href: "#projects", label: "Projects" },
       { href: "#contact", label: "Contact" },
     ],
     []
@@ -179,7 +179,7 @@ export default function Navbar() {
             </ul>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <a
-                href="https://github.com/"
+                href="https://github.com/KrishnakGitHub"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-center text-sm font-semibold text-slate-700 bg-white hover:bg-slate-100 ring-1 ring-slate-200 px-3.5 py-2 rounded-md shadow-sm"
@@ -187,7 +187,7 @@ export default function Navbar() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/"
+                href="https://www.linkedin.com/in/krishna-kumar-2b2121169/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-center text-sm font-semibold text-white bg-orange-600 hover:bg-orange-500 px-3.5 py-2 rounded-md shadow-sm"

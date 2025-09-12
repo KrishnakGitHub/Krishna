@@ -99,7 +99,7 @@ const ExperienceCard = ({ role, company, duration, description, position, type }
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 px-4 bg-gray-100 text-gray-800">
+    <section id="experience" className="py-20 px-4 bg-gray-100 text-gray-800 h-screen">
       <div className="container mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
           <span className="text-orange-500">Experience</span> & Education
@@ -131,7 +131,7 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Vertical Timeline for Mobile */}
+        {/* Vertical Timeline for Mobile  */}
         <div className="relative md:hidden mt-8 pl-8">
           {/* The Vertical Timeline Bar */}
           <div className="absolute top-0 left-8 w-0.5 h-full bg-gray-300"></div>
