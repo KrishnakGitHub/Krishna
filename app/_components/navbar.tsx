@@ -94,7 +94,7 @@ export default function Navbar() {
             {/* Social CTAs */}
             <div className="flex items-center gap-2">
               <a
-                href="https://github.com/"
+                href="https://github.com/KrishnakGitHub"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 bg-white hover:bg-slate-100 ring-1 ring-slate-200 px-3.5 py-2 rounded-md shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40"
@@ -106,7 +106,7 @@ export default function Navbar() {
                 <span className="hidden lg:inline">GitHub</span>
               </a>
               <a
-                href="https://linkedin.com/in/"
+                href="https://www.linkedin.com/in/krishna-kumar-2b2121169/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-orange-600 hover:bg-orange-500 px-3.5 py-2 rounded-md shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40"
