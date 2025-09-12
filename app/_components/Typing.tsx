@@ -9,9 +9,9 @@ interface TypingProps {
 export default function Typing({words}: TypingProps) {
     const text = useTypingEffect(words);
     return (
-    <div>
+    <div className="text-orange-500" aria-live='polite'>
         {text}
-        <span className="border-r-2 border-white animate-pulse ml-1">|</span>
+        <span className="animate-pulse ml-1" aria-hidden="true">|</span>
     </div>
 )
 }
