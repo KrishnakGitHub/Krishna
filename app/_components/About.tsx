@@ -3,7 +3,7 @@ import React from 'react';
 import Typing from './Typing';
 
 export default function About() {
-  const words = ["AI Research Engineer", "Full Stack Developer"];
+  const words = ["AI Research Engineer", "Vibe Coder"];
 
   return (
     <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
