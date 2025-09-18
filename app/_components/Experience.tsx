@@ -99,7 +99,7 @@ const ExperienceCard = ({ role, company, duration, description, position, type }
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 px-4 bg-gray-100 text-gray-800 h-screen">
+    <section id="experience" className="py-20 px-4 bg-gray-100 text-gray-800">
       <div className="container mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
           <span className="text-orange-500">Experience</span> & Education
