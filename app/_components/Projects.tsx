@@ -73,14 +73,14 @@ const Projects = () => {
                     >
                       <CodeBracketIcon className="h-4 w-4 mr-1" /> Code
                     </a>
-                    <Link
+                    {/* <Link
                       href={`/projects/${project.name}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-sm font-semibold text-white bg-gray-700 px-3 py-1.5 rounded-full hover:bg-gray-800"
                     >
                       <PaperClipIcon className="h-4 w-4 mr-1" /> Details
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
 
