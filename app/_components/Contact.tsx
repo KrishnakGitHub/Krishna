@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 export default function Contact() {
-  const EMAIL = "krishnakr.email@gmail.com";
+  const EMAIL = "krishnakjee2016@gmail.com";
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -39,10 +39,10 @@ export default function Contact() {
 
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="mt-5 inline-flex items-center gap-2 text-xl md:text-2xl font-semibold text-slate-900 hover:text-orange-600"
+                  className="inline-flex items-center gap-2 text-xl md:text-2xl font-semibold text-slate-900 hover:text-orange-600"
                   aria-label={`Email ${EMAIL}`}
                 >
-                  {EMAIL}
+                  
                 </a>
 
                 <div className="mt-6 flex items-center gap-3">

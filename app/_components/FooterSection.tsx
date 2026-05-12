@@ -13,7 +13,7 @@ function FooterSection() {
               href="mailto:krishnakr.email@gmail.com"
               className="text-orange-600 hover:text-orange-700"
             >
-              krishnakr.email@gmail.com
+              
             </a>
             <span className="text-slate-300">|</span>
             <a
