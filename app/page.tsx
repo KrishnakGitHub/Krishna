@@ -10,9 +10,9 @@ export default function Home() {
     <div>
       <Navbar />
       <About />
-      <Experience />
+      {/* <Experience />
       <Projects />
-      <Contact />
+      <Contact /> */}
       <FooterSection />
     </div>
   );
