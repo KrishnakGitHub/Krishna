@@ -23,7 +23,7 @@ const experienceData: ExperienceType[] = [
   {
     role: "Software Developer",
     company: "Micropyramid Inc.",
-    duration: "Aug 2021 - Aug 2023",
+    duration: "Aug 2020 - Aug 2023",
     description: [
       "Developed and maintained features for a high-traffic Full Stack Developer Cloud platform using Django and React.",
       "Wrote comprehensive code for features and API integrations, increasing the user experience.",
