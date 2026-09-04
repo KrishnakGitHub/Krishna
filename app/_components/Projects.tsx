@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import Link from "next/link";
 import { EyeIcon, CodeBracketIcon, PaperClipIcon } from "@heroicons/react/24/outline";
 import { projectData, categoryMeta } from '../data';
+import ArrowRightIcon from "@heroicons/react/16/solid/ArrowRightIcon";
 
 const Projects = () => {
   // Compute a few recent projects (by year desc, fallback by name)
@@ -73,14 +74,14 @@ const Projects = () => {
                     >
                       <CodeBracketIcon className="h-4 w-4 mr-1" /> Code
                     </a>
-                    {/* <Link
+                    <Link
                       href={`/projects/${project.name}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-sm font-semibold text-white bg-gray-700 px-3 py-1.5 rounded-full hover:bg-gray-800"
                     >
                       <PaperClipIcon className="h-4 w-4 mr-1" /> Details
-                    </Link> */}
+                    </Link>
                   </div>
                 </div>
 
@@ -105,7 +106,7 @@ const Projects = () => {
 
 
         {/* CTA below grid */}
-        {/* <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 bg-white hover:bg-gray-100 ring-1 ring-gray-200 px-4 py-2 rounded-md transition-colors"
@@ -113,7 +114,7 @@ const Projects = () => {
             View all projects
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
-        </div> */}
+        </div>
       </div>
     </section>
   );

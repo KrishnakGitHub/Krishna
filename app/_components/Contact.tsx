@@ -12,6 +12,9 @@ export default function Contact() {
       setTimeout(() => setCopied(false), 1500);
     } catch (e) {
       // noop
+      if(e instanceof Error) {
+      alert("Failed to copy email. Please copy it manually.");
+      }
     }
   };
 
